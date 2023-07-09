@@ -11,5 +11,16 @@ const routineSchema = new Schema({
     ref: 'User'
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: {
+    transform: function (doc, ret) {
+      delete ret.__v;
+      ret.id = ret._id;
+      delete ret._id;
+      return ret;
+    }
+  }
 })
+
+const Routine = mongoose.model('Routine', routineSchema);
+module.exports = Routine;

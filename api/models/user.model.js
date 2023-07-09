@@ -18,7 +18,17 @@ const userSchema = new Schema ({
     minLength: [7, "Password need at least 7 characters"]
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: {
+    virtuals: true,
+    transform: function (dec, ret) {
+      delete ret.__v;
+      ret.id = ret._id
+      delete ret._id
+      delete ret.password
+      return ret;
+    }
+  }
 })
 
 userSchema.virtual('routines', {
