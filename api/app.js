@@ -10,8 +10,10 @@ const helmet = require('helmet');
 require('./config/db.config')
 
 const app = express();
+const cors = require('./config/cors.config')
 
 app.use(express.json());
+app.use(cors)
 
 app.use(logger('dev'))
 app.use('/api/v1', require('./config/routes.config'))
