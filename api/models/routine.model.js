@@ -6,6 +6,15 @@ const routineSchema = new Schema({
     type: String,
     required: "Routine name is required"
   },
+  exerciseName: {
+    type: String,
+  },
+  sets: {
+    type: Number,
+  },
+  reps: {
+    type: Number,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
