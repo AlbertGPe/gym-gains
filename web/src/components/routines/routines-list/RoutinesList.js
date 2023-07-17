@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import routinesService from '../../../services/routines.service'
+import { Link } from 'react-router-dom'
+import Routinesitem from '../routines-item/Routinesitem';
 
 function RoutinesList() {
   const [routines, setRoutines] = useState([]);
@@ -12,8 +14,11 @@ function RoutinesList() {
 
   return (
     <>
-      <h1>Hello</h1>
-      {routines.map((routine) => <div key={routine.id}>{routine.id}</div>)}
+      {routines.map((routine) => (
+        <Link to={`/routines/${routine.id}`}>
+          <div key={routine.id}>{routine.name}</div>
+        </Link>
+      ))}
     </>
   )
 }
